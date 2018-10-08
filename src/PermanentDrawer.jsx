@@ -10,47 +10,56 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import Input from '@material-ui/core/Input';
-import AvatarList from './AvatarList';
+import ChatList from './ChatList';
 import FloatingActionButtons from './FloatingActionButtons';
-import SimpleBottomNavigation from './SimpleBottomNavigation';
+import Grid from '@material-ui/core/Grid';
+import ChatMenu from './ChatMenu';
+import ChatMessage from './ChatMessage';
+import Paper from '@material-ui/core/Paper';
 
 const drawerWidth = 320;
 
 const styles = theme => ({
+    chatLayout: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingTop: '64px',
+        height: '100%',
+        width: '100%',
+        overflow: 'hidden',
+    },
     root: {
         flexGrow: 1,
     },
-    textField: {
-        marginLeft: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
-        width: 200,
-    },
     appFrame: {
-        height: 440,
+        height: '100%',
+        width: '100%',
+        display: 'flex',
         zIndex: 1,
         overflow: 'hidden',
         position: 'relative',
-        display: 'flex',
-        width: '100%',
     },
     appBar: {
         width: `calc(100% - ${drawerWidth}px)`,
     },
-    'appBar-left': {
-        marginLeft: drawerWidth,
-    },
-    'appBar-right': {
-        marginRight: drawerWidth,
-    },
-    drawerPaper: {
-        position: 'relative',
-        width: drawerWidth,
-    },
+
     toolbar: theme.mixins.toolbar,
     content: {
         flexGrow: 1,
         backgroundColor: theme.palette.background.default,
         padding: theme.spacing.unit * 3,
+    },
+    messageInputWrapper: {
+        position: 'fixed',
+        left: 'auto',
+        right: 0,
+        bottom: 0,
+        width: 'calc(100% - 320px)',
+        padding: theme.spacing.unit * 3,
+    },
+    messageInput: {
+        padding: theme.spacing.unit * 2,
     },
 });
 
@@ -59,7 +68,7 @@ class PermanentDrawer extends React.Component {
         const { classes } = this.props;
 
         return (
-            <div className={classes.root}>
+            <main className={classes.root}>
                 <div className={classes.appFrame}>
                     <AppBar
                         position="absolute"
@@ -71,29 +80,22 @@ class PermanentDrawer extends React.Component {
                             </Typography>
                         </Toolbar>
                     </AppBar>
-                    <Drawer
-                        variant="permanent"
-                        classes={{
-                            paper: classes.drawerPaper,
-                        }}
-                    >
-                        <TextField
-                            id="standard-with-placeholder"
-                            placeholder="Search chats"
-                            className={classes.textField}
-                            margin="normal"
-                        />
-                        <Divider />
-                        <AvatarList/>
-                        <FloatingActionButtons/>
-                        <SimpleBottomNavigation/>
-                    </Drawer>
-                    <main className={classes.content}>
-                        <div className={classes.toolbar} />
-                        <Typography>{'You think water moves fast? You should see ice.'}</Typography>
-                    </main>
+                    <ChatMenu/>
+                <main className={classes.content}>
+                    <div className={classes.toolbar} />
+                    <ChatMessage/>
+                    <div className={classes.messageInputWrapper}>
+                        <Paper className={classes.messageInput} elevation={6}>
+                            <Input
+                                fullWidth
+                                placeholder="Type your message…"
+                            />
+                        </Paper>
+                    </div>
+
+                </main>
                 </div>
-            </div>
+            </main>
         );
     }
 }

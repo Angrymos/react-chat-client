@@ -12,7 +12,7 @@ const styles = {
     },
 };
 
-class SimpleBottomNavigation extends React.Component {
+class BottomMenuNavigation extends React.Component {
     state = {
         value: 0,
     };
@@ -39,8 +39,4 @@ class SimpleBottomNavigation extends React.Component {
     }
 }
 
-SimpleBottomNavigation.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(SimpleBottomNavigation);
+export default withStyles(styles)(BottomMenuNavigation);
