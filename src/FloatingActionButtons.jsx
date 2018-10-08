@@ -9,7 +9,9 @@ import NavigationIcon from '@material-ui/icons/Navigation';
 
 const styles = theme => ({
     button: {
-        margin: theme.spacing.unit,
+        right: 20,
+        bottom: 15,
+        position: 'absolute',
     },
     extendedIcon: {
         marginRight: theme.spacing.unit,
@@ -26,9 +28,5 @@ function FloatingActionButtons(props) {
         </div>
     );
 }
-
-FloatingActionButtons.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
 
 export default withStyles(styles)(FloatingActionButtons);
