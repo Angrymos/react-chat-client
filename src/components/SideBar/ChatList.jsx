@@ -7,10 +7,9 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
 import Avatar from '@material-ui/core/Avatar';
-import LetterAvatar from './LetterAvatar';
-import deepPurple from '../node_modules/@material-ui/core/colors/deepPurple';
+import LetterAvatar from '../LetterAvatar';
+import deepPurple from '../../../node_modules/@material-ui/core/colors/deepPurple';
 import ChatItem from './ChatItem';
-import FloatingActionButtons from './FloatingActionButtons';
 import Drawer from '@material-ui/core/Drawer';
 
 const styles = theme => ({
@@ -26,22 +25,15 @@ const styles = theme => ({
     },
 });
 
-class ChatList extends React.Component {
-    render() {
-        const { classes } = this.props;
-        return (
-            <React.Fragment>
-            <List className={classes.chatsList}>
-                {["Chat", "DogeCode", "ReactChat", "C#"].map(value => (
-                    <ChatItem
-                        value={value}
-                    />
-                ))}
-                <FloatingActionButtons/>
-            </List>
-            </React.Fragment>
-        );
-    }
-}
+const ChatList = ({ classes, chatList }) => (
+    <List className={classes.chatsList}>
+        {chatList.map((chat, index) => (
+            <ChatItem
+                key={index}
+                chat={chat}
+            />
+        ))}
+    </List>
+);
 
 export default withStyles(styles)(ChatList);

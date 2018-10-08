@@ -1,0 +1,69 @@
+{
+  "chatList": [{
+    "title": "Harvey Moss"
+  }, {
+    "title": "Ryan Ross"
+  }, {
+    "title": "Monica"
+  }, {
+    "title": "Doge coges"
+  }, {
+    "title": "React Chat"
+  }, {
+    "title": "Kate Moss"
+  }, {
+    "title": "Tyler Brown"
+  }, {
+    "title": "Jake Paul"
+  }, {
+    "title": "Rachel Green"
+  }, {
+    "title": "Jared Black"
+  }, {
+    "title": "React Chat"
+  }, {
+    "title": "Kate Moss"
+  }, {
+    "title": "Tyler Brown"
+  }, {
+    "title": "Jake Paul"
+  }, {
+    "title": "Rachel Green"
+  }, {
+    "title": "Jared Black"
+  }],
+  "messages": [{
+    "sender": "someone",
+    "content": "Hello"
+  }, {
+    "sender": "me",
+    "content": "Hi"
+  },{
+    "sender": "someone",
+    "content": "Material-UI is an MIT-licensed open source project. It's an independent project with ongoing development made possible entirely thanks to the support of these awesome backers."
+  },{
+    "sender": "someone",
+    "content": "You can start using Material-UI with minimal Front-end infrastructure, which is great for prototyping. We discourage using this approach in production though - the client has to download the entire library, regardless of which components are actually used, affecting performance and bandwidth utilisation."
+  },{
+    "sender": "me",
+    "content": "If while using these examples you make changes or enhancements that could improve the developer experience"
+  },{
+    "sender": "someone",
+    "content": "A selection of basic page layouts to help you get started building your app."
+  },{
+    "sender": "someone",
+    "content": "In order to use the font Icon component you must first add the Material icons font. Here are some instructions on how to do so. For instance, via Google Web Fonts:"
+  },{
+    "sender": "someone",
+    "content": "This defines the alignment along the main axis."
+  }, {
+    "sender": "me",
+    "content": " this property has no effect when there is only one line of flex items."
+  }, {
+    "sender": "someone",
+    "content": "You can start using Material-UI with minimal Front-end infrastructure, which is great for prototyping. We discourage using this approach in production though - the client has to download the entire library, regardless of which components are actually used, affecting performance and bandwidth utilisation."
+  },{
+    "sender": "me",
+    "content": "If while using these examples you make changes or enhancements that could improve the developer experience"
+  }]
+}
