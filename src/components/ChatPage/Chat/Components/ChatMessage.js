@@ -2,9 +2,8 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import Avatar from '@material-ui/core/Avatar';
 import classnames from 'classnames';
-import LetterAvatar from '../LetterAvatar';
+import Avatar from '../../../Avatar';
 
 const styles = theme => ({
   messageWrapper: {
@@ -29,9 +28,7 @@ const styles = theme => ({
 
 const ChatMessage = ({ classes, message }) => {
   const userAvatar = (
-    <LetterAvatar
-      sender={message.sender}
-    />
+    <Avatar colorFrom={message.sender}>{message.sender}</Avatar>
   );
 
   const isMessageFromMe = message.sender === 'me';

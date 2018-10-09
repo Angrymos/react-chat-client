@@ -8,8 +8,8 @@ import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 
-import ChatList from './SideBar/ChatList';
-import BottomMenuNavigation from './SideBar/BottomMenuNavigation';
+import ChatList from './Components/ChatList';
+import BottomMenuNavigation from './Components/BottomMenuNavigation';
 
 const styles = theme => ({
   drawerPaper: {
