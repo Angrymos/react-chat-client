@@ -7,13 +7,11 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Paper from '@material-ui/core/Paper'
-import Login from './TabMenu/Login';
-import SignUp from './TabMenu/SignUp';
+import LoginForm from './TabMenu/LoginForm';
+import SignupForm from './TabMenu/SignupForm';
 
 const styles = theme => ({
   root: {
-    backgroundColor: theme.palette.background.paper,
-    width: 500,
     position: 'relative',
     minHeight: 200,
   },
@@ -21,28 +19,23 @@ const styles = theme => ({
 
 class TabMenu extends React.Component {
   state = {
-    value: 0,
+    activeTab: 0,
   };
 
-  handleChange = (event, value) => {
-    this.setState({ value });
-  };
-
-  handleChangeIndex = index => {
-    this.setState({ value: index });
+  handleOnChangeActiveTab = (event, activeTab) => {
+    this.setState({ activeTab });
   };
 
   render() {
     const { classes, theme } = this.props;
+    const { activeTab } = this.state;
 
     return (
       <Paper elevation={4} className={classes.root}>
         <AppBar position="static" color="default">
           <Tabs
-            value={this.state.value}
-            onChange={this.handleChange}
-            indicatorColor="primary"
-            textColor="primary"
+            value={activeTab}
+            onChange={this.handleOnChangeActiveTab}
             fullWidth
           >
             <Tab label="LOGIN" />
@@ -51,11 +44,11 @@ class TabMenu extends React.Component {
         </AppBar>
         <SwipeableViews
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-          index={this.state.value}
-          onChangeIndex={this.handleChangeIndex}
+          index={activeTab}
+          onChangeIndex={this.handleOnChangeActiveTab}
         >
-         <Login dir={theme.direction}/>
-         <SignUp dir={theme.direction}/>
+         <LoginForm />
+         <SignupForm />
         </SwipeableViews>
       </Paper>
     );
