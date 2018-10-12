@@ -3,7 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import classnames from 'classnames';
-import Avatar from '../../../Avatar';
+import Avatar from '../../Avatar';
 
 const styles = theme => ({
   messageWrapper: {

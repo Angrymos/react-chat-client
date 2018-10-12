@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import deepPurple from '../../../../../node_modules/@material-ui/core/colors/deepPurple';
-import titleInitials from '../../../../Utils/TitleInitial';
-import Avatar from '../../../Avatar';
+import deepPurple from '../../../../node_modules/@material-ui/core/colors/deepPurple';
+import titleInitials from '../../../utils/title-initial';
+import Avatar from '../../Avatar';
 
 const styles = theme => ({
     purpleAvatar: {

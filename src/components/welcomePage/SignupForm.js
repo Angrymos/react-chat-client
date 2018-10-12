@@ -67,21 +67,8 @@ class SignupForm extends React.Component {
     if (!this.validate()) return;
 
     const { username, password } = this.state;
-
-    fetch('http://localhost:8000/v1/signup', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username: username.value,
-        password: password.value,
-      }),
-    })
-      .then(response => response.json())
-      .then(json => console.log(json))
-      .catch(reason => console.log(reason))
+    //console.log (username, password);
+    this.props.onSubmit(username.value, password.value);
   };
 
   render() {
@@ -132,7 +119,7 @@ class SignupForm extends React.Component {
             className={classes.button}
             type='submit'
           >
-            Login
+            Sign up
           </Button>
         </div>
       </form>

@@ -1,15 +1,18 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import ChatMessage from './Components/ChatMessage';
-import MessageInput from './Components/MessageInput';
-import ChatMessageList from './Components/ChatMessageList';
+import ChatMessage from './ChatMessage';
+import MessageInput from './MessageInput';
+import ChatMessageList from './ChatMessageList';
 
 const styles = theme => ({
   content: {
-    flexGrow: 1,
+    position: 'absolute',
+    left: 320,
+    top: 0,
+    right: 0,
+    bottom: 0,
+    overflowY: 'hidden',
     backgroundColor: theme.palette.background.default,
-    paddingTop: theme.spacing.unit * 3,
-    paddingBottom: theme.spacing.unit * 3,
   },
   toolbar: theme.mixins.toolbar,
 });

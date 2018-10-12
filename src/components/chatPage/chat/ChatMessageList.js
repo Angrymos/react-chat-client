@@ -4,10 +4,11 @@ import ChatMessage from './ChatMessage';
 
 const styles = theme => ({
   messagesWrapper: {
-    height: '100%',
-    width: '100%',
-    paddingTop: theme.spacing.unit * 3,
+    top: 64,
+    bottom: 0,
     paddingBottom: 120,
+    position: 'absolute',
+    overflowY: 'scroll'
   },
 });
 
@@ -27,7 +28,6 @@ class ChatMessageList extends React.Component {
 
   scrollDownHistory() {
     const messagesWrapper =  this.messagesWrapper.current;
-    console.log(messagesWrapper);
 
     if (messagesWrapper) {
       messagesWrapper.scrollTop = messagesWrapper.scrollHeight;

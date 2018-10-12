@@ -7,8 +7,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Paper from '@material-ui/core/Paper'
-import LoginForm from './TabMenu/LoginForm';
-import SignupForm from './TabMenu/SignupForm';
+import LoginForm from './LoginForm';
+import SignupForm from './SignupForm';
 
 const styles = theme => ({
   root: {

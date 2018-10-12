@@ -1,7 +1,7 @@
 import React from 'react';
 import MUIAvatar from '@material-ui/core/Avatar';
-import getColor from '../Utils/ColorFrom';
-import titleInitials from '../Utils/TitleInitial';
+import getColor from '../utils/color-from';
+import titleInitials from '../utils/title-initial';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = {

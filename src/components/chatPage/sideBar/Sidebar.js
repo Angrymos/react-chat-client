@@ -8,12 +8,12 @@ import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 
-import ChatList from './Components/ChatList';
-import BottomMenuNavigation from './Components/BottomMenuNavigation';
+import ChatList from './ChatList';
+import BottomMenuNavigation from './BottomMenuNavigation';
 
 const styles = theme => ({
   drawerPaper: {
-    position: 'relative',
+    position: 'absolute',
     width: 320,
   },
   drawerHeader: {
