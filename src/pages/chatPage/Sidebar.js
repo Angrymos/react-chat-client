@@ -1,6 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import TextField from '@material-ui/core/TextField';
@@ -8,8 +6,8 @@ import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 
-import ChatList from './ChatList';
-import BottomMenuNavigation from './BottomMenuNavigation';
+import ChatList from './sideBar/ChatList';
+import BottomMenuNavigation from './sideBar/BottomMenuNavigation';
 
 const styles = theme => ({
   drawerPaper: {

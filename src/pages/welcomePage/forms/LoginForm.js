@@ -1,5 +1,4 @@
 import React from 'react';
-import fetch from 'isomorphic-fetch';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button/Button';
@@ -21,7 +20,7 @@ const styles = theme => ({
   },
 });
 
-class SignupForm extends React.Component {
+class LoginForm extends React.Component {
   state = {
     username: {
       value: '',
@@ -31,22 +30,6 @@ class SignupForm extends React.Component {
       value: '',
       isValid: true,
     },
-    repeatedPassword: {
-      value: '',
-      isValid: true,
-    },
-  };
-
-  validate = () => {
-    const { password, repeatedPassword } = this.state;
-    const isValid = password.value === repeatedPassword.value;
-
-    this.setState({
-      password: { ...password, isValid },
-      repeatedPassword: { ...repeatedPassword, isValid },
-    });
-
-    return isValid;
   };
 
   handleOnChangeInput = (event) => {
@@ -63,17 +46,14 @@ class SignupForm extends React.Component {
 
   handleOnClickSubmit = (event) => {
     event.preventDefault();
-
-    if (!this.validate()) return;
-
     const { username, password } = this.state;
-    //console.log (username, password);
+
     this.props.onSubmit(username.value, password.value);
   };
 
   render() {
     const { classes } = this.props;
-    const { username, password, repeatedPassword } = this.state;
+    const { username, password } = this.state;
 
     return (
       <form onSubmit={this.handleOnClickSubmit}>
@@ -83,7 +63,6 @@ class SignupForm extends React.Component {
             label='Username'
             placeholder='Type your username...'
             name='username'
-            autoComplete='username'
             className={classes.input}
             value={username.value}
             onChange={this.handleOnChangeInput}
@@ -95,23 +74,10 @@ class SignupForm extends React.Component {
             placeholder='Type your password...'
             type='password'
             name='password'
-            autoComplete='password'
             className={classes.input}
             value={password.value}
             onChange={this.handleOnChangeInput}
             error={!password.isValid}
-          />
-          <TextField
-            required
-            label='Repeat password'
-            placeholder='Repeat your password...'
-            type='password'
-            name='repeatedPassword'
-            autoComplete='new-password'
-            className={classes.input}
-            value={repeatedPassword.value}
-            onChange={this.handleOnChangeInput}
-            error={!repeatedPassword.isValid}
           />
           <Button
             variant='contained'
@@ -119,7 +85,7 @@ class SignupForm extends React.Component {
             className={classes.button}
             type='submit'
           >
-            Sign up
+            Login
           </Button>
         </div>
       </form>
@@ -127,4 +93,4 @@ class SignupForm extends React.Component {
   }
 };
 
-export default withStyles(styles)(SignupForm);
+export default withStyles(styles)(LoginForm);

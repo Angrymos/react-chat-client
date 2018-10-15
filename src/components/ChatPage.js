@@ -1,8 +1,7 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
 import ChatHeader from './ChatHeader';
-import Sidebar from './chatPage/sideBar/Sidebar';
-import Chat from './chatPage/chat/Chat';
+import Sidebar from '../pages/chatPage/Sidebar';
+import Chat from '../pages/chatPage/Chat';
 import { chatList, messages } from '../mock-data';
 
 const ChatPage = () => (

@@ -6,7 +6,7 @@ export default function titleInitials(title) {
       .map(char => char.toUpperCase())
       .slice(0, 2)
       .join('');
-  } catch(e) {
+  } catch (e) {
     console.error(e);
     return 'doge';
   }

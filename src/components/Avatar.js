@@ -11,9 +11,9 @@ const styles = {
   },
 };
 
-const Avatar = ({classes, colorFrom, children, ...rest}) => (
+const Avatar = ({ classes, colorFrom, children, ...rest }) => (
   <div className={classes.row}>
-    <MUIAvatar style={{ backgroundColor: getColor(colorFrom),  margin: 10}} {...rest}>
+    <MUIAvatar style={{ backgroundColor: getColor(colorFrom), margin: 10 }} {...rest}>
       {titleInitials(children)}
     </MUIAvatar>
   </div>

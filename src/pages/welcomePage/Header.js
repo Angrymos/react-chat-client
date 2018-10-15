@@ -11,14 +11,13 @@ const styles = theme => ({
 });
 
 const Header = ({ classes }) => (
-  <AppBar position="absolute" className={classes.appBar}>
+  <AppBar position='absolute' className={classes.appBar}>
     <Toolbar>
-      <Typography variant="title" color="inherit" noWrap>
+      <Typography variant='title' color='inherit' noWrap>
         DogeCodes React chat
       </Typography>
     </Toolbar>
   </AppBar>
 );
-
 
 export default withStyles(styles)(Header);

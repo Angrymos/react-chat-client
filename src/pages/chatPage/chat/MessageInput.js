@@ -1,5 +1,4 @@
 import React from 'react';
-import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import Paper from '@material-ui/core/Paper';
@@ -31,7 +30,7 @@ class MessageInput extends React.Component {
           />
         </Paper>
       </div>
-    )
+    );
   }
 }
 

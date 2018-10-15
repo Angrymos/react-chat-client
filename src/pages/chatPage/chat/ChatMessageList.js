@@ -8,7 +8,7 @@ const styles = theme => ({
     bottom: 0,
     paddingBottom: 120,
     position: 'absolute',
-    overflowY: 'scroll'
+    overflowY: 'scroll',
   },
 });
 
@@ -27,7 +27,7 @@ class ChatMessageList extends React.Component {
   }
 
   scrollDownHistory() {
-    const messagesWrapper =  this.messagesWrapper.current;
+    const messagesWrapper = this.messagesWrapper.current;
 
     if (messagesWrapper) {
       messagesWrapper.scrollTop = messagesWrapper.scrollHeight;

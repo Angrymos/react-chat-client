@@ -1,15 +1,14 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
-import Header from './welcomePage/Header';
-import TabMenu from './welcomePage/TabMenu';
+import Header from './Header';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import SwipeableViews from 'react-swipeable-views';
 import Paper from '@material-ui/core/Paper';
-import LoginForm from './welcomePage/LoginForm';
-import SignupForm from './welcomePage/SignupForm';
+import LoginForm from './forms/LoginForm';
+import SignupForm from './forms/SignupForm';
 
 const styles = theme => ({
   formWrapper: {
@@ -32,11 +31,10 @@ class WelcomePage extends React.Component {
   render() {
     const { classes, theme, signup, login, isAuthenticated } = this.props;
     const { activeTab } = this.state;
-    console.log(signup);
 
     if (isAuthenticated) {
       return (
-        <Redirect to="/chat"/>
+        <Redirect to='/chat' />
       );
     }
     return (
@@ -59,8 +57,8 @@ class WelcomePage extends React.Component {
               index={activeTab}
               onChangeIndex={this.handleOnChangeActiveTab}
             >
-              <LoginForm onSubmit={login}/>
-              <SignupForm onSubmit={signup}/>
+              <LoginForm onSubmit={login} />
+              <SignupForm onSubmit={signup} />
             </SwipeableViews>
           </Paper>
         </div>
