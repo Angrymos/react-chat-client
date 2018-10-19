@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { signup, login } from '../actions/index';
-import WelcomePage from '../../pages/welcomePage/WelcomePage';
+import WelcomePage from '../../pages/WelcomePage';
 
 const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated,

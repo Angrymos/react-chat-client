@@ -1,14 +1,14 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
-import Header from './Header';
+import Header from './welcomePage/Header';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import SwipeableViews from 'react-swipeable-views';
 import Paper from '@material-ui/core/Paper';
-import LoginForm from './forms/LoginForm';
-import SignupForm from './forms/SignupForm';
+import LoginForm from './welcomePage/forms/LoginForm';
+import SignupForm from './welcomePage/forms/SignupForm';
 
 const styles = theme => ({
   formWrapper: {
