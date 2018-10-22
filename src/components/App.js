@@ -1,8 +1,8 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { Router, Route, Switch, Redirect } from 'react-router-dom';
-import ChatPage from '../pages/ChatPage';
 import WelcomePage from '../redux/containers/WelcomePage';
+import ChatPage from '../redux/containers/ChatPage';
 import configureStore from '../redux/store';
 import  PrivateRoute  from '../redux/containers/PrivateRoute'
 import history from '../utils/history';
