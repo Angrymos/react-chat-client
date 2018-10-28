@@ -16,13 +16,23 @@ const styles = theme => ({
   toolbar: theme.mixins.toolbar,
 });
 
-const Chat = ({ classes, messages }) => {
+const Chat = ({ classes, messages, activeChat, activeUser, joinChat, sendMessage }) => {
   return (
+    <>
     <main className={classes.content}>
       <div className={classes.toolbar} />
-      <ChatMessageList messages={messages} />
-      <MessageInput />
+      <ChatMessageList
+        messages={messages}
+        activeUser={activeUser}
+      />
+      <MessageInput
+        sendMessage={(content) => sendMessage(activeChat._id, content)}
+        showJoinButton={!activeUser.isChatMember}
+        onClickJoin={() => joinChat(activeChat._id)}
+        activeUser={activeUser}
+      />
     </main>
+      </>
   );
 };
 

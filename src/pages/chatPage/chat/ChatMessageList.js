@@ -8,6 +8,7 @@ const styles = theme => ({
     bottom: 0,
     paddingBottom: 120,
     position: 'absolute',
+    width: '100%',
     overflowY: 'scroll',
   },
 });
@@ -35,12 +36,13 @@ class ChatMessageList extends React.Component {
   }
 
   render() {
-    const { classes, messages } = this.props;
+    const { classes, messages, activeUser } = this.props;
     return (
       <div className={classes.messagesWrapper} ref={this.messagesWrapper}>
         {messages && messages.map((message, index) => (
           <ChatMessage
             key={index}
+            activeUserId={activeUser._id}
             message={message}
           />
         ))}

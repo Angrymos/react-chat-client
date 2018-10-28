@@ -26,12 +26,12 @@ const styles = theme => ({
   },
 });
 
-const ChatMessage = ({ classes, message }) => {
+const ChatMessage = ({ classes, message, activeUserId }) => {
   const userAvatar = (
-    <Avatar colorFrom={message.sender}>{message.sender}</Avatar>
+    <Avatar colorFrom={message.sender.username}>{message.sender.username}</Avatar>
   );
 
-  const isMessageFromMe = message.sender === 'me';
+  const isMessageFromMe = message.sender._id === activeUserId;
 
   return (
     <div
@@ -48,7 +48,7 @@ const ChatMessage = ({ classes, message }) => {
         )}
       >
         <Typography variant='caption'>
-          {message.sender}
+          {message.sender.username}
         </Typography>
         <Typography variant='body1'>
           {message.content}

@@ -2,22 +2,34 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ChatListItem from './ChatListItem';
+import Typography from '../../../../node_modules/@material-ui/core/Typography/Typography';
 
 const styles = theme => ({
   chatsList: {
     height: 'calc(100% - 56px)',
     overflowY: 'scroll',
   },
+  noChats: {
+    textAlign: 'center',
+  },
 });
 
-const ChatList = ({ classes, chatList }) => (
+const ChatList = ({ classes, chats, activeChat, setActiveChat }) => (
   <List className={classes.chatsList}>
-    {chatList.map((chat, index) => (
-      <ChatListItem
-        key={index}
-        chat={chat}
-      />
-    ))}
+    {chats && chats.length > 0 ? (
+      chats.map(chat => (
+        <ChatListItem
+          key={chat._id}
+          setActiveChat={setActiveChat}
+          active={Boolean(activeChat && activeChat._id === chat._id)}
+          chat={chat}
+        />
+      ))
+    ) : (
+      <Typography variant="subheading" className={classes.noChats}>
+        There is no chats yet...
+      </Typography>
+    )}
   </List>
 );
 

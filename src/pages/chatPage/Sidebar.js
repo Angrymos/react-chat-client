@@ -5,18 +5,26 @@ import TextField from '@material-ui/core/TextField';
 import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
-
+import Modal from '@material-ui/core/Modal';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import BottomNavigation from '@material-ui/core/BottomNavigation';
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+import RestoreIcon from '../../../node_modules/@material-ui/icons/Restore';
+import Explore from '../../../node_modules/@material-ui/icons/Explore';
 import ChatList from './sideBar/ChatList';
-import BottomMenuNavigation from './sideBar/BottomMenuNavigation';
 
-const styles = theme => ({
+const styles = {
+  bottomNavigation: {
+    width: 319,
+  },
   drawerPaper: {
     position: 'absolute',
     width: 320,
   },
   drawerHeader: {
-    paddingLeft: theme.spacing.unit * 3,
-    paddingRight: theme.spacing.unit * 3,
+    paddingLeft: 24,
+    paddingRight: 24,
   },
   textField: {
     paddingLeft: 24,
@@ -27,31 +35,114 @@ const styles = theme => ({
   addButton: {
     position: 'absolute',
     left: 'auto',
-    right: theme.spacing.unit * 3,
-    bottom: theme.spacing.unit * 3 + 48,
+    right: 24,
+    bottom: 72,
   },
-});
+  modalWrapper: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modal: {
+    width: '30%',
+    minWidth: '300px',
+    padding: 24,
+  },
+};
 
-const Sidebar = ({ classes, chatList }) => (
-  <Drawer
-    variant='permanent'
-    classes={{ paper: classes.drawerPaper }}
-  >
-    <div className={classes.drawerHeader}>
-      <TextField
-        id='standard-with-placeholder'
-        placeholder='Search chats'
-        className={classes.textField}
-        margin='normal'
-      />
-    </div>
-    <Divider />
-    <ChatList chatList={chatList} />
-    <Button variant='fab' color='primary' aria-label='Add' className={classes.addButton}>
-      <AddIcon />
-    </Button>
-    <BottomMenuNavigation />
-  </Drawer>
-);
+class Sidebar extends React.Component {
+  state = {
+    isModalOpen: false,
+    title: '',
+    activeTab: 0,
+  };
+
+  handleOnToggleModal = () => {
+    this.setState({
+      isModalOpen: !this.state.isModalOpen,
+    });
+  };
+
+  handleOnChangeInput = (event) => {
+    this.setState({
+      title: event.target.value,
+    });
+  };
+
+  handleOnClickCreate = () => {
+    this.props.onClickCreateChat(this.state.title);
+    this.handleOnToggleModal();
+  };
+
+  handleOnChangeTab = (event, value) => {
+    console.log('change tab');
+    this.setState({
+      activeTab: value,
+    });
+  };
+
+  render() {
+    const { classes, chats, activeChat, setActiveChat } = this.props;
+    const { isModalOpen, title, activeTab } = this.state;
+
+    return (
+      <Drawer
+        variant='permanent'
+        classes={{ paper: classes.drawerPaper }}
+      >
+        <div className={classes.drawerHeader}>
+          <TextField
+            id='standard-with-placeholder'
+            placeholder='Search chats'
+            className={classes.textField}
+            margin='normal'
+          />
+        </div>
+        <Divider />
+        <ChatList
+          chats={(activeTab === 0 ? chats.my : chats.all)}
+          activeChat={activeChat}
+          setActiveChat={setActiveChat}
+        />
+        <Button variant='fab' color='primary' aria-label='Add' onClick={this.handleOnToggleModal} className={classes.addButton}>
+          <AddIcon />
+        </Button>
+        <Modal
+          open={isModalOpen}
+          className={classes.modalWrapper}
+          onClose={this.handleOnToggleModal}
+        >
+          <Paper className={classes.modal}>
+            <Typography variant='title' id='modal-title'>
+              Create new chat
+            </Typography>
+            <TextField
+              required
+              fullWidth
+              name='chatname'
+              label='New name'
+              type='text'
+              margin='normal'
+              value={title}
+              onChange={this.handleOnChangeInput}
+            />
+            <Button color='primary' onClick={this.handleOnClickCreate}>
+              Create
+            </Button>
+          </Paper>
+        </Modal>
+        <BottomNavigation
+          value={activeTab}
+          onChange={this.handleOnChangeTab}
+          showLabels
+          className={classes.root}
+        >
+          <BottomNavigationAction label='My Chats' icon={<RestoreIcon />} />
+          <BottomNavigationAction label='Explore' icon={<Explore />} />
+        </BottomNavigation>
+      </Drawer>
+    );
+  }
+}
 
 export default withStyles(styles)(Sidebar);
