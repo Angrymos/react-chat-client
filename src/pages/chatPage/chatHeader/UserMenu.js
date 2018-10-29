@@ -63,9 +63,8 @@ class UserMenu extends React.Component {
   };
 
   handleOnToggleModal = () => {
-    this.setState({
-      isModalOpen: !this.state.isModalOpen
-    })
+    this.setState({ isModalOpen: !this.state.isModalOpen });
+    this.handleOnClose();
   };
 
   handleOnClickSave = () => {
@@ -80,7 +79,7 @@ class UserMenu extends React.Component {
 
   render() {
     const { anchorEl, isModalOpen, firstName, lastName, username } = this.state;
-    const { classes } = this.props;
+    const { classes, disabled } = this.props;
     const open = Boolean(anchorEl);
 
     return (
@@ -89,6 +88,7 @@ class UserMenu extends React.Component {
           aria-label='More'
           aria-owns={open ? 'long-menu' : null}
           aria-haspopup='true'
+          disabled={disabled}
           onClick={this.handleOnClick}
         >
           <MoreVertIcon />

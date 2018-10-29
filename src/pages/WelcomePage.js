@@ -9,6 +9,7 @@ import SwipeableViews from 'react-swipeable-views';
 import Paper from '@material-ui/core/Paper';
 import LoginForm from './welcomePage/forms/LoginForm';
 import SignupForm from './welcomePage/forms/SignupForm';
+import ErrorMessage from '../components/ErrorMessage';
 
 const styles = theme => ({
   formWrapper: {
@@ -24,12 +25,16 @@ class WelcomePage extends React.Component {
     activeTab: 0,
   };
 
+  componentDidMount() {
+    this.props.receiveAuth();
+  };
+
   handleOnChangeActiveTab = (event, activeTab) => {
     this.setState({ activeTab });
   };
 
   render() {
-    const { classes, theme, signup, login, isAuthenticated } = this.props;
+    const { classes, theme, signup, login, isAuthenticated, error } = this.props;
     const { activeTab } = this.state;
 
     if (isAuthenticated) {
@@ -61,6 +66,7 @@ class WelcomePage extends React.Component {
               <SignupForm onSubmit={signup} />
             </SwipeableViews>
           </Paper>
+          <ErrorMessage error={error}/>
         </div>
       </>
     );

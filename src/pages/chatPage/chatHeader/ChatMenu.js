@@ -29,7 +29,7 @@ class ChatMenu extends React.Component {
 
   render() {
     const { anchorEl } = this.state;
-    const { activeUser } = this.props;
+    const { activeUser, disabled } = this.props;
     const open = Boolean(anchorEl);
 
     if (!activeUser.isChatMember) {
@@ -42,6 +42,7 @@ class ChatMenu extends React.Component {
           aria-label='More'
           aria-owns={open ? 'long-menu' : null}
           aria-haspopup='true'
+          disabled={disabled}
           onClick={this.handleOnClick}
         >
           <MoreVertIcon />

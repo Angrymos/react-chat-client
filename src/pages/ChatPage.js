@@ -2,17 +2,19 @@ import React from 'react';
 import ChatHeader from './chatPage/ChatHeader';
 import Sidebar from './chatPage/Sidebar';
 import Chat from './chatPage/Chat';
+import ErrorMessage from '../components/ErrorMessage';
 
 class ChatPage extends React.Component {
   componentDidMount() {
-    const { match, fetchAllChats, fetchMyChats, socketsConnection, mountChat, setActiveChat } = this.props;
+    console.warn('-----------------------------------------------------------');
+    const { match, fetchAllChats, fetchMyChats, socketsConnect, mountChat, setActiveChat } = this.props;
 
     Promise.all([
       fetchMyChats(),
       fetchAllChats(),
     ])
       .then(() => {
-        socketsConnection();
+        socketsConnect();
       })
       .then(() => {
         const { chatId } = match.params;
@@ -28,7 +30,12 @@ class ChatPage extends React.Component {
     const { match: { params }, setActiveChat, unmountChat, mountChat } = this.props;
     const { params: nextParams } = nextProps.match;
 
-    console.warn(params.chatId); //!!!!!
+    /*console.warn('***********WIll_RECEIVE_PROPS*********');
+    console.warn('params', this.props.match);
+    console.warn('currentChat', params.chatId);
+    console.warn('nextChat', nextParams.chatId);
+    console.warn('***********WIll_RECEIVE_PROPS*********');*/
+
 
     if (nextParams.chatId && params.chatId !== nextParams.chatId) {
       setActiveChat(nextParams.chatId);
@@ -50,8 +57,12 @@ class ChatPage extends React.Component {
       leaveChat,
       setActiveChat,
       sendMessage,
+      error,
+      isConnected,
     } = this.props;
 
+
+    //console.warn('-----------RENDER---------', this.props.chats.active);
     return (
       <>
         <ChatHeader
@@ -61,12 +72,14 @@ class ChatPage extends React.Component {
           leaveChat={leaveChat}
           activeUser={activeUser}
           activeChat={chats.active}
+          isConnected={isConnected}
         />
         <Sidebar
           chats={chats}
           activeChat={chats.active}
           onClickCreateChat={createChat}
           setActiveChat={setActiveChat}
+          isConnected={isConnected}
         />
         <Chat
           messages={messages}
@@ -75,7 +88,9 @@ class ChatPage extends React.Component {
           joinChat={joinChat}
           sendMessage={sendMessage}
           setActiveChat={setActiveChat}
+          isConnected={isConnected}
         />
+        <ErrorMessage error={error}/>
       </>
     );
   }

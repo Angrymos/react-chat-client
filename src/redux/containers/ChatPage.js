@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { fetchAllChats, setActiveChat, fetchMyChats, deleteChat, createChat, joinChat, leaveChat } from '../actions/chats';
 import { logout } from '../actions/auth';
 import { editUserInfo } from '../actions/users';
-import { sendMessage, mountChat, unmountChat, socketsConnection } from '../actions/sockets';
+import { sendMessage, mountChat, unmountChat, socketsConnect } from '../actions/sockets';
 import * as chatsSelector from '../reducers/chats';
 import * as usersSelector from '../reducers/index';
 import ChatPage from '../../pages/ChatPage';
@@ -26,6 +26,8 @@ const mapStateToProps = state => {
     },
 
     messages: state.messages,
+    error: state.services.errors.chat,
+    isConnected: state.services.isConnected,
   };
 };
 
@@ -42,7 +44,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   sendMessage,
   mountChat,
   unmountChat,
-  socketsConnection
+  socketsConnect
 }, dispatch);
 
 export default connect(

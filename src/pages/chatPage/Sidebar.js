@@ -82,7 +82,7 @@ class Sidebar extends React.Component {
   };
 
   render() {
-    const { classes, chats, activeChat, setActiveChat } = this.props;
+    const { classes, chats, activeChat, setActiveChat, isConnected } = this.props;
     const { isModalOpen, title, activeTab } = this.state;
 
     return (
@@ -100,11 +100,19 @@ class Sidebar extends React.Component {
         </div>
         <Divider />
         <ChatList
+          disabled={!isConnected}
           chats={(activeTab === 0 ? chats.my : chats.all)}
           activeChat={activeChat}
           setActiveChat={setActiveChat}
         />
-        <Button variant='fab' color='primary' aria-label='Add' onClick={this.handleOnToggleModal} className={classes.addButton}>
+        <Button
+          variant='fab'
+          color='primary'
+          aria-label='Add'
+          onClick={this.handleOnToggleModal}
+          className={classes.addButton}
+          disabled={!isConnected}
+        >
           <AddIcon />
         </Button>
         <Modal

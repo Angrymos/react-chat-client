@@ -82,7 +82,9 @@ export const setActiveChat = (chatId) => (dispatch) => {
   return dispatch(fetchChat(chatId))
     .then(data => {
       if (!data) {
-        dispatch(redirect('/chats'));
+        console.error('data', data);
+
+        dispatch(redirect('/chat'));
 
         return dispatch({
           type: types.UNSET_ACTIVE_CHAT,
@@ -121,7 +123,7 @@ export const deleteChat = (chatId) => (dispatch, getState) => {
         payload: data,
       });
 
-      dispatch(redirect('/chats'));
+      dispatch(redirect('/chat'));
 
       dispatch({
         type: types.UNSET_ACTIVE_CHAT,
@@ -159,7 +161,7 @@ export const createChat = (title) => (dispatch, getState) => {
         payload: { chat },
       });
 
-      dispatch(redirect(`/chats/${chat._id}`));
+      dispatch(redirect(`/chat/${chat._id}`));
 
       return chat;
     })
@@ -191,7 +193,7 @@ export const joinChat = (chatId) => (dispatch, getState) => {
         payload: { chat },
       });
 
-      dispatch(redirect(`/chats/${chat._id}`));
+      dispatch(redirect(`/chat/${chat._id}`));
 
       return chat;
     })

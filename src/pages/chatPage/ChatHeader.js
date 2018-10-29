@@ -3,8 +3,8 @@ import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import UserMenu from './UserMenu';
-import ChatMenu from './ChatMenu';
+import UserMenu from './chatHeader/UserMenu';
+import ChatMenu from './chatHeader/ChatMenu';
 import Avatar from '../../components/Avatar';
 
 const styles = theme => ({
@@ -21,18 +21,19 @@ const styles = theme => ({
   },
 });
 
-const ChatHeader = ({ classes, logout, activeChat, activeUser, leaveChat, deleteChat, editUserInfo }) => (
+const ChatHeader = ({ classes, logout, activeChat, activeUser, leaveChat, deleteChat, editUserInfo, isConnected }) => (
   <AppBar position='absolute' className={classes.appBar}>
     <Toolbar>
       {activeChat ? (
         <React.Fragment>
-          <Avatar colorFrom={activeChat._id}>{activeChat.title}</Avatar>
+          <Avatar colorFrom={activeChat.title}>{activeChat.title}</Avatar>
           <Typography variant="title" className={classes.appBarTitle}>
             {activeChat.title}
             <ChatMenu
+              disabled={!isConnected}
               activeUser={activeUser}
-              onLeaveClick={() => leaveChat(activeChat._id)}
-              onDeleteClick={() => deleteChat(activeChat._id)}
+              onClickLeave={() => leaveChat(activeChat._id)}
+              onClickDelete={() => deleteChat(activeChat._id)}
             />
           </Typography>
 
@@ -43,6 +44,7 @@ const ChatHeader = ({ classes, logout, activeChat, activeUser, leaveChat, delete
         </Typography>
       )}
       <UserMenu
+        disabled={!isConnected}
         activeUser={activeUser}
         onClickEditUserInfo={editUserInfo}
         onClickLogout={() => logout()}

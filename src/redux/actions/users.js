@@ -1,7 +1,7 @@
 import * as types from '../constants/users';
 import callApi from '../../utils/call-api';
 
-export const editUserInfo = (username, firstName, lastName) => (dispatch, getState) => {
+export const editUserInfo = ({ username, firstName, lastName }) => (dispatch, getState) => {
   const state = getState();
   const { isFetching } = state.services;
   const { token } = state.auth;
@@ -15,14 +15,12 @@ export const editUserInfo = (username, firstName, lastName) => (dispatch, getSta
   });
 
   return callApi('/users/me', token, { method: 'POST' }, {
-    username,
-    firstName,
-    lastName,
+    data: { username, firstName, lastName },
   })
-    .then(data => {
+    .then(json => {
       dispatch({
         type: types.EDIT_USER_INFO_SUCCESS,
-        payload: data,
+        payload: json,
       });
     })
     .catch(reason => dispatch({
