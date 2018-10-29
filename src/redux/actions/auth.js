@@ -1,7 +1,13 @@
 import * as types from '../constants/auth';
 import callApi from '../../utils/call-api';
 
-export const signup = (username, password) => (dispatch) => {
+export const signup = (username, password) => (dispatch, getState) => {
+  const { isFetching } = getState().services;
+
+  if (isFetching.signup) {
+    return Promise.resolve();
+  }
+
   dispatch({
     type: types.SIGNUP_REQUEST,
   });
@@ -26,7 +32,13 @@ export const signup = (username, password) => (dispatch) => {
     }));
 };
 
-export const login = (username, password) => (dispatch) => {
+export const login = (username, password) => (dispatch, getState) => {
+  const { isFetching } = getState().services;
+
+  if (isFetching.login) {
+    return Promise.resolve();
+  }
+
   dispatch({
     type: types.LOGIN_REQUEST,
   });
@@ -51,7 +63,13 @@ export const login = (username, password) => (dispatch) => {
     }));
 };
 
-export const logout = () => dispatch => {
+export const logout = () => (dispatch, getState) => {
+  const { isFetching } = getState().services;
+
+  if (isFetching.logout) {
+    return Promise.resolve();
+  }
+
   dispatch({
     type: types.LOGOUT_REQUEST,
   });
@@ -72,6 +90,12 @@ export const logout = () => dispatch => {
 };
 
 export const receiveAuth = () => (dispatch, getState) => {
+  const { isFetching } = getState().services;
+
+  if (isFetching.receiveAuth) {
+    return Promise.resolve();
+  }
+
   const { token } = getState().auth;
 
   if (!token) {
