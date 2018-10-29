@@ -2,16 +2,39 @@ import React from 'react';
 import ChatHeader from './chatPage/ChatHeader';
 import Sidebar from './chatPage/Sidebar';
 import Chat from './chatPage/Chat';
-import { messages } from '../mock-data';
 
 class ChatPage extends React.Component {
   componentDidMount() {
-    const { fetchAllChats, fetchMyChats } = this.props;
+    const { match, fetchAllChats, fetchMyChats, socketsConnection, mountChat, setActiveChat } = this.props;
 
     Promise.all([
       fetchMyChats(),
       fetchAllChats(),
-    ]);
+    ])
+      .then(() => {
+        socketsConnection();
+      })
+      .then(() => {
+        const { chatId } = match.params;
+
+        if (chatId) {
+          setActiveChat(chatId);
+          mountChat(chatId);
+        }
+      });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { match: { params }, setActiveChat, unmountChat, mountChat } = this.props;
+    const { params: nextParams } = nextProps.match;
+
+    console.warn(params.chatId); //!!!!!
+
+    if (nextParams.chatId && params.chatId !== nextParams.chatId) {
+      setActiveChat(nextParams.chatId);
+      unmountChat(params.chatId);
+      mountChat(nextParams.chatId);
+    }
   }
 
   render() {

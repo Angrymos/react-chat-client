@@ -195,30 +195,3 @@ export const leaveChat = (chatId) => (dispatch, getState) => {
         payload: reason,
       }));
 };
-
-export const sendMessage = (chatId, content) => (dispatch, getState) => {
-  const { token } = getState().auth;
-
-  dispatch({
-    type: types.SEND_MESSAGE_REQUEST,
-    payload: { chatId, content },
-  });
-
-  return callApi(`/chats/${chatId}`, token, { method: 'POST' }, {
-    data: { content },
-  })
-    .then(data => {
-      dispatch({
-        type: types.SEND_MESSAGE_SUCCESS,
-        payload: data,
-      });
-
-      //Refetch messages
-      dispatch(fetchChat(chatId));
-    })
-    .catch(reason =>
-      dispatch({
-        type: types.SEND_MESSAGE_FAILURE,
-        payload: reason,
-      }));
-};
