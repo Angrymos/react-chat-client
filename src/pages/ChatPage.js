@@ -6,7 +6,6 @@ import ErrorMessage from '../components/ErrorMessage';
 
 class ChatPage extends React.Component {
   componentDidMount() {
-    console.warn('-----------------------------------------------------------');
     const { match, fetchAllChats, fetchMyChats, socketsConnect, mountChat, setActiveChat } = this.props;
 
     Promise.all([
@@ -29,13 +28,6 @@ class ChatPage extends React.Component {
   componentWillReceiveProps(nextProps) {
     const { match: { params }, setActiveChat, unmountChat, mountChat } = this.props;
     const { params: nextParams } = nextProps.match;
-
-    /*console.warn('***********WIll_RECEIVE_PROPS*********');
-    console.warn('params', this.props.match);
-    console.warn('currentChat', params.chatId);
-    console.warn('nextChat', nextParams.chatId);
-    console.warn('***********WIll_RECEIVE_PROPS*********');*/
-
 
     if (nextParams.chatId && params.chatId !== nextParams.chatId) {
       setActiveChat(nextParams.chatId);
@@ -62,7 +54,6 @@ class ChatPage extends React.Component {
     } = this.props;
 
 
-    //console.warn('-----------RENDER---------', this.props.chats.active);
     return (
       <>
         <ChatHeader

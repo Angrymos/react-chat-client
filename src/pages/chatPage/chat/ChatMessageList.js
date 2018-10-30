@@ -1,6 +1,8 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import ChatMessage from './ChatMessage';
+import Paper from '@material-ui/core/Paper/Paper';
+import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
   messagesWrapper: {
@@ -11,6 +13,15 @@ const styles = theme => ({
     width: '100%',
     overflowY: 'scroll',
   },
+  paper: {
+    padding: theme.spacing.unit * 3,
+  },
+  wrapper: {
+    height: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
 });
 
 class ChatMessageList extends React.Component {
@@ -36,7 +47,25 @@ class ChatMessageList extends React.Component {
   }
 
   render() {
-    const { classes, messages, activeUser } = this.props;
+    const { classes, messages, activeUser, activeChat } = this.props;
+    if (!activeChat) {
+      return (
+        <div className={classes.wrapper}>
+          <Paper className={classes.paper}>
+            <Typography variant='display1' gutterBottom>
+              Start messaging…
+            </Typography>
+            <Typography variant='body1' gutterBottom>
+              Use <strong>Global</strong> to explore communities around here.
+            </Typography>
+            <Typography variant='body1' gutterBottom>
+              Use <strong>Recents</strong> to see your recent conversations.
+            </Typography>
+          </Paper>
+        </div>
+      );
+    }
+
     return (
       <div className={classes.messagesWrapper} ref={this.messagesWrapper}>
         {messages && messages.map((message, index) => (

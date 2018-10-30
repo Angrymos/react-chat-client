@@ -82,8 +82,6 @@ export const setActiveChat = (chatId) => (dispatch) => {
   return dispatch(fetchChat(chatId))
     .then(data => {
       if (!data) {
-        console.error('data', data);
-
         dispatch(redirect('/chat'));
 
         return dispatch({
@@ -227,10 +225,6 @@ export const leaveChat = (chatId) => (dispatch, getState) => {
 
       dispatch(fetchMyChats());
       dispatch(fetchAllChats());
-
-      dispatch({
-        type: types.UNSET_ACTIVE_CHAT,
-      });
 
       return data;
     })

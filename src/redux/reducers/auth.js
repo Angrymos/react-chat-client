@@ -1,4 +1,5 @@
 import * as types from '../constants/index';
+import { EDIT_USER_INFO_SUCCESS } from '../constants/index';
 const token = localStorage.getItem('token');
 
 const initialState = {
@@ -32,6 +33,11 @@ export default function auth(state = initialState, action) {
         isAuthenticated: false,
         user: null,
         token: '',
+      };
+    case EDIT_USER_INFO_SUCCESS:
+      return {
+        ...state,
+        user: action.payload.user,
       };
     default:
       return state;

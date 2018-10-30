@@ -37,8 +37,9 @@ class ChatMenu extends React.Component {
     }
 
     return (
-      <div>
+      <>
         <IconButton
+          color='inherit'
           aria-label='More'
           aria-owns={open ? 'long-menu' : null}
           aria-haspopup='true'
@@ -56,7 +57,7 @@ class ChatMenu extends React.Component {
           {activeUser.isMember && <MenuItem onClick={this.handleOnClickLeave}>Leave</MenuItem>}
           {activeUser.isCreator && <MenuItem onClick={this.handleOnClickDelete}>Delete</MenuItem>}
         </Menu>
-      </div>
+      </>
     );
   }
 }

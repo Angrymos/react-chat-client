@@ -85,6 +85,7 @@ class UserMenu extends React.Component {
     return (
       <div className={classes.menu}>
         <IconButton
+          color='inherit'
           aria-label='More'
           aria-owns={open ? 'long-menu' : null}
           aria-haspopup='true'

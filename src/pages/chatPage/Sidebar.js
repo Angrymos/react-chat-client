@@ -55,6 +55,7 @@ class Sidebar extends React.Component {
     isModalOpen: false,
     title: '',
     activeTab: 0,
+    searchValue: '',
   };
 
   handleOnToggleModal = () => {
@@ -63,9 +64,15 @@ class Sidebar extends React.Component {
     });
   };
 
-  handleOnChangeInput = (event) => {
+  handleOnChangeTitle = (event) => {
     this.setState({
       title: event.target.value,
+    });
+  };
+
+  handleOnChangeSearchValue = (event) => {
+    this.setState({
+      searchValue: event.target.value,
     });
   };
 
@@ -75,15 +82,22 @@ class Sidebar extends React.Component {
   };
 
   handleOnChangeTab = (event, value) => {
-    console.log('change tab');
     this.setState({
       activeTab: value,
     });
   };
 
+  filterChats = (chats) => {
+    const { searchValue } = this.state;
+
+    return chats
+      .filter(chat => chat.title.toLowerCase().includes(searchValue.toLowerCase()))
+      .sort((one, two) => (one.title.toLowerCase() <= two.title.toLowerCase() ? -1 : 1));
+  };
+
   render() {
     const { classes, chats, activeChat, setActiveChat, isConnected } = this.props;
-    const { isModalOpen, title, activeTab } = this.state;
+    const { isModalOpen, title, activeTab, searchValue } = this.state;
 
     return (
       <Drawer
@@ -96,12 +110,14 @@ class Sidebar extends React.Component {
             placeholder='Search chats'
             className={classes.textField}
             margin='normal'
+            value={searchValue}
+            onChange={this.handleOnChangeSearchValue}
           />
         </div>
         <Divider />
         <ChatList
           disabled={!isConnected}
-          chats={(activeTab === 0 ? chats.my : chats.all)}
+          chats={this.filterChats(activeTab === 0 ? chats.my : chats.all)}
           activeChat={activeChat}
           setActiveChat={setActiveChat}
         />
@@ -132,7 +148,7 @@ class Sidebar extends React.Component {
               type='text'
               margin='normal'
               value={title}
-              onChange={this.handleOnChangeInput}
+              onChange={this.handleOnChangeTitle}
             />
             <Button color='primary' onClick={this.handleOnClickCreate}>
               Create

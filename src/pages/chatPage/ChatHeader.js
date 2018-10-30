@@ -9,7 +9,7 @@ import Avatar from '../../components/Avatar';
 
 const styles = theme => ({
   appBar: {
-    position: 'fixed',
+    position:'absolute',
     width: 'calc(100% - 320px)',
     marginLeft: 320,
   },
@@ -22,12 +22,12 @@ const styles = theme => ({
 });
 
 const ChatHeader = ({ classes, logout, activeChat, activeUser, leaveChat, deleteChat, editUserInfo, isConnected }) => (
-  <AppBar position='absolute' className={classes.appBar}>
+  <AppBar className={classes.appBar}>
     <Toolbar>
       {activeChat ? (
-        <React.Fragment>
+        <>
           <Avatar colorFrom={activeChat.title}>{activeChat.title}</Avatar>
-          <Typography variant="title" className={classes.appBarTitle}>
+          <Typography variant='title' className={classes.appBarTitle}>
             {activeChat.title}
             <ChatMenu
               disabled={!isConnected}
@@ -36,10 +36,9 @@ const ChatHeader = ({ classes, logout, activeChat, activeUser, leaveChat, delete
               onClickDelete={() => deleteChat(activeChat._id)}
             />
           </Typography>
-
-        </React.Fragment>
+        </>
       ) : (
-        <Typography variant="title" className={classes.appBarTitle}>
+        <Typography variant='title' className={classes.appBarTitle}>
           DogeCodes React Chat
         </Typography>
       )}
