@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -45,14 +46,14 @@ const ChatMessage = ({ classes, message, activeUserId }) => {
       <div className={classes.messageWrapper}>
         <Typography className={classes.statusMessage}>
           <Typography
-            variant="caption"
+            variant='caption'
             style={{ color: randomColor(message.sender._id) }}
             className={classes.statusMessageUser}
           >
             {message.sender.username}
           </Typography>
           {message.content}
-          <Typography variant="caption" component="span">
+          <Typography variant='caption' component='span'>
             {moment(message.createdAt).fromNow()}
           </Typography>
         </Typography>
@@ -89,6 +90,22 @@ const ChatMessage = ({ classes, message, activeUserId }) => {
       {!isMessageFromMe && userAvatar}
     </div>
   );
+};
+
+ChatMessage.propTypes = {
+  classes: PropTypes.objectOf(PropTypes.string).isRequired,
+
+  message: PropTypes.shape({
+    chatId: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
+    sender: PropTypes.object.isRequired,
+    createdAt: PropTypes.string.isRequired,
+  }),
+  activeUserId: PropTypes.string.isRequired,
+};
+
+ChatMessage.defaultProps = {
+  statusMessage: false,
 };
 
 export default withStyles(styles)(ChatMessage);

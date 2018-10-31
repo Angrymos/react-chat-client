@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ChatListItem from './ChatListItem';
@@ -21,9 +22,9 @@ const ChatList = ({ classes, chats, activeChat, setActiveChat, disabled }) => (
         <ChatListItem
           key={chat._id}
           disabled={disabled}
-          setActiveChat={setActiveChat}
-          active={Boolean(activeChat && activeChat._id === chat._id)}
           chat={chat}
+          active={Boolean(activeChat && activeChat._id === chat._id)}
+          setActiveChat={setActiveChat}
         />
       ))
     ) : (
@@ -35,3 +36,23 @@ const ChatList = ({ classes, chats, activeChat, setActiveChat, disabled }) => (
 );
 
 export default withStyles(styles)(ChatList);
+
+ChatList.propTypes = {
+  classes: PropTypes.objectOf(PropTypes.string).isRequired,
+  disabled: PropTypes.bool.isRequired,
+
+  chats: PropTypes.arrayOf(PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    createdAt: PropTypes.string.isRequired,
+  })).isRequired,
+  activeChat: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+  }),
+  setActiveChat: PropTypes.func.isRequired,
+};
+
+ChatList.defaultProps = {
+  activeChat: null,
+};

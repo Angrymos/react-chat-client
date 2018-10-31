@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button/Button';
@@ -21,6 +22,11 @@ const styles = theme => ({
 });
 
 class SignupForm extends React.Component {
+  static propTypes = {
+    classes: PropTypes.objectOf(PropTypes.string).isRequired,
+    onSubmit: PropTypes.func.isRequired,
+  };
+
   state = {
     username: {
       value: '',

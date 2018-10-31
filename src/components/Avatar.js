@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import MUIAvatar from '@material-ui/core/Avatar';
 import getColor from '../utils/color-from';
 import titleInitials from '../utils/title-initial';
@@ -18,5 +19,10 @@ const Avatar = ({ classes, colorFrom, children, ...rest }) => (
     </MUIAvatar>
   </div>
 );
+
+Avatar.propTypes = {
+  colorFrom: PropTypes.string.isRequired,
+  children: PropTypes.string.isRequired,
+};
 
 export default withStyles(styles)(Avatar);
