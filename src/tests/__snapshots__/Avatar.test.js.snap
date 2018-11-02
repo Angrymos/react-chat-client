@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Avatar /> renders correctly 1`] = `
+<div
+  className="Avatar-row-5"
+>
+  <div
+    className="MuiAvatar-root-6 MuiAvatar-colorDefault-7"
+    style={
+      Object {
+        "backgroundColor": "#ff9800",
+        "margin": 10,
+      }
+    }
+  >
+    NS
+  </div>
+</div>
+`;

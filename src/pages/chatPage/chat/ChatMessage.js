@@ -41,6 +41,7 @@ const ChatMessage = ({ classes, message, activeUserId }) => {
     <Avatar colorFrom={message.sender.username}>{message.sender.username}</Avatar>
   );
 
+  console.log(message);
   if (message.statusMessage) {
     return (
       <div className={classes.messageWrapper}>
@@ -100,12 +101,9 @@ ChatMessage.propTypes = {
     content: PropTypes.string.isRequired,
     sender: PropTypes.object.isRequired,
     createdAt: PropTypes.string.isRequired,
+    statusMessage: PropTypes.bool
   }),
   activeUserId: PropTypes.string.isRequired,
-};
-
-ChatMessage.defaultProps = {
-  statusMessage: false,
 };
 
 export default withStyles(styles)(ChatMessage);
