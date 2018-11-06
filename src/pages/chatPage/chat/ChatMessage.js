@@ -2,9 +2,10 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import Avatar from '@material-ui/core/Avatar';
 import classnames from 'classnames';
-import LetterAvatar from '../LetterAvatar';
+import Avatar from '../../../components/Avatar';
+import randomColor from '../../../utils/color-from';
+import moment from 'moment';
 
 const styles = theme => ({
   messageWrapper: {
@@ -25,16 +26,41 @@ const styles = theme => ({
     marginRight: theme.spacing.unit * 2,
     backgroundColor: '#e6dcff',
   },
+  statusMessage: {
+    width: '100%',
+    textAlign: 'center',
+  },
+  statusMessageUser: {
+    display: 'inline',
+  },
 });
 
-const ChatMessage = ({ classes, message }) => {
+const ChatMessage = ({ classes, message, activeUserId }) => {
   const userAvatar = (
-    <LetterAvatar
-      sender={message.sender}
-    />
+    <Avatar colorFrom={message.sender.username}>{message.sender.username}</Avatar>
   );
 
-  const isMessageFromMe = message.sender === 'me';
+  if (message.statusMessage) {
+    return (
+      <div className={classes.messageWrapper}>
+        <Typography className={classes.statusMessage}>
+          <Typography
+            variant="caption"
+            style={{ color: randomColor(message.sender._id) }}
+            className={classes.statusMessageUser}
+          >
+            {message.sender.username}
+          </Typography>
+          {message.content}
+          <Typography variant="caption" component="span">
+            {moment(message.createdAt).fromNow()}
+          </Typography>
+        </Typography>
+      </div>
+    );
+  }
+
+  const isMessageFromMe = message.sender._id === activeUserId;
 
   return (
     <div
@@ -51,7 +77,7 @@ const ChatMessage = ({ classes, message }) => {
         )}
       >
         <Typography variant='caption'>
-          {message.sender}
+          {message.sender.username}
         </Typography>
         <Typography variant='body1'>
           {message.content}
