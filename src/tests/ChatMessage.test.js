@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import renderer from 'react-test-renderer';
 import ChatMessage from '../pages/chatPage/chat/ChatMessage';
-import Avatar from '../components/Avatar';
 
 const mockProps = {
   message: {
@@ -46,13 +45,38 @@ describe('<Avatar />', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders message from active user', () => {
+    const tree = renderer.create(<ChatMessage {...mockProps} />).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders message from other users', () => {
+    const message = {
+      ...mockProps.message,
+      sender: {
+        _id: '54sdf321',
+        username: 'someone',
+      },
+    };
+
+    const props = {
+      ...mockProps,
+      message: message,
+    };
+
+    const tree = renderer.create(<ChatMessage{...props} />).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
   it('renders status message', () => {
     const message = {
       ...mockProps.message,
       content: ' joined',
       statusMessage: true,
     };
-    
+
     const props = {
       ...mockProps,
       message: message,

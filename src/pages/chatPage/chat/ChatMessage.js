@@ -41,7 +41,6 @@ const ChatMessage = ({ classes, message, activeUserId }) => {
     <Avatar colorFrom={message.sender.username}>{message.sender.username}</Avatar>
   );
 
-  console.log(message);
   if (message.statusMessage) {
     return (
       <div className={classes.messageWrapper}>
