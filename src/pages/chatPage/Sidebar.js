@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import TextField from '@material-ui/core/TextField';
@@ -51,6 +52,18 @@ const styles = {
 };
 
 class Sidebar extends React.Component {
+  static propTypes = {
+    classes: PropTypes.objectOf(PropTypes.string).isRequired,
+    isConnected: PropTypes.bool.isRequired,
+    chats: PropTypes.shape({
+      active: PropTypes.object,
+      my: PropTypes.array.isRequired,
+      all: PropTypes.array.isRequired,
+    }).isRequired,
+    onClickCreateChat: PropTypes.func.isRequired,
+    setActiveChat: PropTypes.func.isRequired,
+  };
+
   state = {
     isModalOpen: false,
     title: '',
@@ -96,7 +109,7 @@ class Sidebar extends React.Component {
   };
 
   render() {
-    const { classes, chats, activeChat, setActiveChat, isConnected } = this.props;
+    const { classes, chats, setActiveChat, isConnected } = this.props;
     const { isModalOpen, title, activeTab, searchValue } = this.state;
 
     return (
@@ -118,7 +131,7 @@ class Sidebar extends React.Component {
         <ChatList
           disabled={!isConnected}
           chats={this.filterChats(activeTab === 0 ? chats.my : chats.all)}
-          activeChat={activeChat}
+          activeChat={chats.active}
           setActiveChat={setActiveChat}
         />
         <Button

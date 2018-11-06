@@ -1,0 +1,217 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MessageInput /> renders button 1`] = `
+<div
+  className="MessageInput-messageInputWrapper-1"
+>
+  <div
+    className="MuiPaper-root-3 MuiPaper-elevation6-11 MuiPaper-rounded-4 MessageInput-messageInput-2"
+  >
+    <div
+      className="MuiInputBase-root-43 MuiInput-root-30 MuiInput-underline-34 MuiInputBase-fullWidth-52 MuiInput-fullWidth-37"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+    >
+      <input
+        className="MuiInputBase-input-53 MuiInput-input-38"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="Type your message…"
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<MessageInput /> renders disabled button 1`] = `
+<div
+  className="MessageInput-messageInputWrapper-1"
+>
+  <div
+    className="MuiPaper-root-3 MuiPaper-elevation6-11 MuiPaper-rounded-4 MessageInput-messageInput-2"
+  >
+    <div
+      className="MuiInputBase-root-43 MuiInput-root-30 MuiInput-underline-34 MuiInputBase-fullWidth-52 MuiInput-fullWidth-37"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+    >
+      <input
+        className="MuiInputBase-input-53 MuiInput-input-38"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="Type your message…"
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<MessageInput /> renders disabled input 1`] = `
+<div
+  className="MessageInput-messageInputWrapper-1"
+>
+  <div
+    className="MuiPaper-root-3 MuiPaper-elevation6-11 MuiPaper-rounded-4 MessageInput-messageInput-2"
+  >
+    <div
+      className="MuiInputBase-root-43 MuiInput-root-30 MuiInput-underline-34 MuiInputBase-disabled-46 MuiInput-disabled-33 MuiInputBase-fullWidth-52 MuiInput-fullWidth-37"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+    >
+      <input
+        className="MuiInputBase-input-53 MuiInput-input-38 MuiInputBase-disabled-46 MuiInput-disabled-33"
+        disabled={true}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="Type your message…"
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<MessageInput /> renders input 1`] = `
+<div
+  className="MessageInput-messageInputWrapper-1"
+>
+  <div
+    className="MuiPaper-root-3 MuiPaper-elevation6-11 MuiPaper-rounded-4 MessageInput-messageInput-2"
+  >
+    <div
+      className="MuiInputBase-root-43 MuiInput-root-30 MuiInput-underline-34 MuiInputBase-fullWidth-52 MuiInput-fullWidth-37"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+    >
+      <input
+        className="MuiInputBase-input-53 MuiInput-input-38"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="Type your message…"
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<MessageInput {...mockProps}/> renders button 1`] = `
+<div
+  className="MessageInput-messageInputWrapper-1"
+>
+  <div
+    className="MuiPaper-root-3 MuiPaper-elevation6-11 MuiPaper-rounded-4 MessageInput-messageInput-2"
+  >
+    <div
+      className="MuiInputBase-root-43 MuiInput-root-30 MuiInput-underline-34 MuiInputBase-fullWidth-52 MuiInput-fullWidth-37"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+    >
+      <input
+        className="MuiInputBase-input-53 MuiInput-input-38"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="Type your message…"
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<MessageInput {...mockProps}/> renders disabled button 1`] = `
+<div
+  className="MessageInput-messageInputWrapper-1"
+>
+  <div
+    className="MuiPaper-root-3 MuiPaper-elevation6-11 MuiPaper-rounded-4 MessageInput-messageInput-2"
+  >
+    <div
+      className="MuiInputBase-root-43 MuiInput-root-30 MuiInput-underline-34 MuiInputBase-fullWidth-52 MuiInput-fullWidth-37"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+    >
+      <input
+        className="MuiInputBase-input-53 MuiInput-input-38"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="Type your message…"
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<MessageInput {...mockProps}/> renders disabled input 1`] = `
+<div
+  className="MessageInput-messageInputWrapper-1"
+>
+  <div
+    className="MuiPaper-root-3 MuiPaper-elevation6-11 MuiPaper-rounded-4 MessageInput-messageInput-2"
+  >
+    <div
+      className="MuiInputBase-root-43 MuiInput-root-30 MuiInput-underline-34 MuiInputBase-disabled-46 MuiInput-disabled-33 MuiInputBase-fullWidth-52 MuiInput-fullWidth-37"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+    >
+      <input
+        className="MuiInputBase-input-53 MuiInput-input-38 MuiInputBase-disabled-46 MuiInput-disabled-33"
+        disabled={true}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="Type your message…"
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<MessageInput {...mockProps}/> renders input 1`] = `
+<div
+  className="MessageInput-messageInputWrapper-1"
+>
+  <div
+    className="MuiPaper-root-3 MuiPaper-elevation6-11 MuiPaper-rounded-4 MessageInput-messageInput-2"
+  >
+    <div
+      className="MuiInputBase-root-43 MuiInput-root-30 MuiInput-underline-34 MuiInputBase-fullWidth-52 MuiInput-fullWidth-37"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+    >
+      <input
+        className="MuiInputBase-input-53 MuiInput-input-38"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="Type your message…"
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+</div>
+`;

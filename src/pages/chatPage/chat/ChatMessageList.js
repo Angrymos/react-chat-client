@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import ChatMessage from './ChatMessage';
 import Paper from '@material-ui/core/Paper/Paper';
@@ -29,6 +30,33 @@ class ChatMessageList extends React.Component {
     super(props);
     this.messagesWrapper = React.createRef();
   }
+
+  static propTypes = {
+    classes: PropTypes.objectOf(PropTypes.string).isRequired,
+
+    messages: PropTypes.arrayOf(PropTypes.shape({
+      chatId: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
+      sender: PropTypes.object.isRequired,
+      createdAt: PropTypes.string.isRequired,
+    })),
+    activeUser: PropTypes.shape({
+      firstName: PropTypes.string,
+      lastName: PropTypes.string,
+      username: PropTypes.string,
+      isMember: PropTypes.bool.isRequired,
+      isCreator: PropTypes.bool.isRequired,
+      isChatMember: PropTypes.bool.isRequired,
+    }).isRequired,
+    activeChat: PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+    }),
+  };
+
+  static defaultProps = {
+    messages: [],
+  };
 
   componentDidMount() {
     this.scrollDownHistory();
@@ -71,8 +99,8 @@ class ChatMessageList extends React.Component {
         {messages && messages.map((message, index) => (
           <ChatMessage
             key={index}
-            activeUserId={activeUser._id}
             message={message}
+            activeUserId={activeUser._id}
           />
         ))}
       </div>

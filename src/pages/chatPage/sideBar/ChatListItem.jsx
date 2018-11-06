@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import moment from 'moment';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -17,6 +18,17 @@ const styles = theme => ({
 });
 
 class ChatListItem extends React.Component {
+  static propTypes = {
+    classes: PropTypes.objectOf(PropTypes.string).isRequired,
+    disabled: PropTypes.bool.isRequired,
+    chat: PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+    }),
+    active: PropTypes.bool.isRequired,
+    setActiveChat: PropTypes.func.isRequired,
+  };
+
   handleOnClick = (history, chat) => () => {
     if (this.props.disabled) return;
     history.push(`/chat/${chat._id}`);
@@ -44,5 +56,6 @@ class ChatListItem extends React.Component {
     );
   };
 }
+
 
 export default withStyles(styles)(ChatListItem);
